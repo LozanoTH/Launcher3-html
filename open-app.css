@@ -1,0 +1,109 @@
+/*todo lo que tenga wue ver con animaciones visuales durante la animación 
+tambien jeyfrems desprecion dd css para mas comedida*/
+
+
+
+
+
+
+
+        .app-modal.active {
+            display: flex;
+            opacity: 1;
+            animation: zoomIn 1s ease;
+        }
+
+        @keyframes zoomIn {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .modal-content {
+            text-align: center;
+            transform: translateY(20px);
+            animation: contentSlideUp 0.3s ease 0.1s forwards;
+        }
+
+        @keyframes contentSlideUp {
+            to {
+                transform: translateY(0);
+            }
+        }
+
+        .modal-icon {
+            width: 120px;
+            height: 120px;
+            border-radius: 30px;
+            margin: 0 auto 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .modal-icon::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.05) 100%);
+            border-radius: 30px;
+        }
+
+        .modal-icon svg {
+            width: 56px;
+            height: 56px;
+            stroke: white;
+            stroke-width: 2;
+            fill: none;
+            z-index: 1;
+        }
+
+        .modal-content h2 {
+            color: white;
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .modal-content p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 16px;
+            margin-bottom: 40px;
+        }
+
+
+        .swipe-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 14px;
+        }
+
+        .swipe-line {
+            width: 60px;
+            height: 3px;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 2px;
+        }
+
+        
+        .apps-container::-webkit-scrollbar,
+        .drawer-apps::-webkit-scrollbar {
+            display: none;
+        } 

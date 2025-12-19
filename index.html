@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <!-- fondos de pantalla -->
+    <div class="wallpaper"></div>
+    <div class="status-bar">
+        <span id="time">9:41</span>
+        <div class="status-icons">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M5 12.55a11 11 0 0 1 14.08 0"></path>
+                <path d="M1.42 9a16 16 0 0 1 21.16 0"></path>
+                <path d="M8.53 16.11a6 6 0 0 1 6.95 0"></path>
+                <line x1="12" y1="20" x2="12.01" y2="20"></line>
+            </svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="2" y="7" width="20" height="10" rx="2"></rect>
+                <line x1="22" y1="12" x2="18" y2="12"></line>
+            </svg>
+        </div>
+    </div>
+    <div class="search-container">
+        <div class="search-bar">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                <circle cx="11" cy="11" r="8"></circle>
+                <path d="m21 21-4.35-4.35"></path>
+            </svg>
+            <input type="text" placeholder="Buscar apps..." id="searchInput">
+        </div>
+    </div>
+    <div class="apps-container" id="appsContainer">
+        <div class="apps-grid" id="appsGrid"></div>
+    </div>
+    <div class="dock-container">
+        <div class="dock" id="dock">
+        </div>
+    </div>
+    <div class="gesture-indicator" id="gestureIndicator">
+        Desliza hacia arriba para abrir el cajón
+    </div>
+
+    <div class="app-drawer" id="appDrawer">
+        <div class="drawer-header">
+            <h2>Todas las Apps</h2>
+            <div class="drawer-indicator"></div>
+        </div>
+        <div class="drawer-apps" id="drawerApps"></div>
+    </div>
+    <div class="app-modal" id="appModal">
+        <div class="modal-content">
+            <div class="modal-icon" id="modalIcon"></div>
+            <h2 id="modalTitle"></h2>
+            <div class="swipe-indicator">
+            </div>
+        </div>
+    </div>
+    <link rel="stylesheet" href="es.css">
+    <link rel="stylesheet" href="open-app.css">
+    <script src="js.js-pretty.js" defer></script>
+</body>
+</html>

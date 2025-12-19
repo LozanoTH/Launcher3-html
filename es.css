@@ -1,0 +1,386 @@
+
+
+
+
+
+/*
+#################################################################################################
+# universal y body
+
+css principal casi todo 
+#################################################################################################
+*/
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+            -webkit-user-select: none;
+            user-select: none;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            overflow: hidden;
+            width: 100vw;
+            height: 100vh;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4edf5 100%);
+            position: relative;
+            touch-action: pan-y;
+        }
+
+        /*
+        ######################################################################################
+        #     fondo de pantalla 
+        #######################################################################################
+        */
+       .wallpaper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.9) 0%, rgba(118, 75, 162, 0.9) 100%),
+                url('/wallpapers/1.jpg');
+    background-size: cover;
+    background-position: center;
+    background-blend-mode: overlay;
+    opacity: 0.95;
+    z-index: -1;
+    animation: wallpaperFadeIn 1s ease-out;
+}
+
+@keyframes wallpaperFadeIn {
+    from {
+        opacity: 0;
+        filter: brightness(0.8);
+    }
+    to {
+        opacity: 0.95;
+        filter: brightness(1);
+    }
+}
+
+        /*
+        ############################################################################################
+        # barra de estado superior 
+        ################################################################################################
+        */
+        .status-bar {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 12px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: rgba(255, 255, 255, 0.95);
+            font-size: 15px;
+            font-weight: 600;
+            z-index: 100;
+        }
+
+        .status-icons {
+            display: flex;
+            gap: 6px;
+            align-items: center;
+        }
+
+        /*
+        ###############################################################################################
+        # buscador superior capz de activas cajon de apps 
+        #################################################################################################
+        */
+        .search-container {
+            position: absolute;
+            top: 60px;
+            left: 0;
+            right: 0;
+            padding: 0 24px;
+            z-index: 10;
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .search-bar {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 14px 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .search-bar:focus-within {
+            background: rgba(255, 255, 255, 0.25);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .search-bar input {
+            flex: 1;
+            background: transparent;
+            border: none;
+            outline: none;
+            color: white;
+            font-size: 16px;
+            font-weight: 400;
+        }
+
+        .search-bar input::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* 
+        ###############################################################################################
+        # contenerdor de iconos 
+        ###############################################################################################
+         */
+        .apps-container {
+            position: absolute;
+            top: 140px;
+            left: 0;
+            right: 0;
+            bottom: 120px;
+            padding: 0 24px;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .apps-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            padding-bottom: 20px;
+        }
+
+        /*
+        ###############################################################################################
+        #    no me acuerde que ase esto
+        #############################################################################################
+        */
+        .app-icon {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.5s ease forwards;
+        }
+
+        .app-icon:nth-child(1) { animation-delay: 0.05s; }
+        .app-icon:nth-child(2) { animation-delay: 0.1s; }
+        .app-icon:nth-child(3) { animation-delay: 0.15s; }
+        .app-icon:nth-child(4) { animation-delay: 0.2s; }
+        .app-icon:nth-child(5) { animation-delay: 0.25s; }
+        .app-icon:nth-child(6) { animation-delay: 0.3s; }
+        .app-icon:nth-child(7) { animation-delay: 0.35s; }
+        .app-icon:nth-child(8) { animation-delay: 0.4s; }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .icon-container {
+            width: 70px;
+            height: 70px;
+            border-radius: 22px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .icon-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.05) 100%);
+            border-radius: 22px;
+        }
+
+        .app-icon:hover .icon-container {
+            transform: translateY(-10px) scale(1.1);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+        }
+
+        .app-icon:active .icon-container {
+            transform: translateY(-5px) scale(0.95);
+            transition: transform 0.1s;
+        }
+
+        .icon-container svg {
+            width: 32px;
+            height: 32px;
+            stroke: white;
+            stroke-width: 2;
+            fill: none;
+            z-index: 1;
+        }
+
+        .app-name {
+            color: rgba(255, 255, 255, 0.95);
+            font-size: 12px;
+            font-weight: 500;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            max-width: 70px;
+            text-align: center;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        /*
+        # ################################################################################################
+        # Dock Minimal 
+        ##################################################################################################
+        */
+        .dock-container {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 20px;
+            z-index: 50;
+        }
+
+        .dock {
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(30px);
+            border-radius: 28px;
+            padding: 16px 24px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .dock.hidden {
+            transform: translateY(100px);
+        }
+
+        .dock .icon-container {
+            width: 60px;
+            height: 60px;
+        }
+
+        /*
+        ##############################################################################################
+         #     cojor de apps completa
+         #############################################################################################
+         */
+        .app-drawer {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(15, 20, 31, 0.98);
+            backdrop-filter: blur(30px);
+            z-index: 1000;
+            padding: 24px;
+            transform: translateY(100%);
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .app-drawer.active {
+            transform: translateY(0);
+        }
+
+        .drawer-header {
+            padding: 20px 0 30px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .drawer-header h2 {
+            color: white;
+            font-size: 32px;
+            font-weight: 700;
+            text-align: center;
+        }
+
+        .drawer-indicator {
+            width: 40px;
+            height: 5px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 3px;
+            position: absolute;
+            bottom: -3px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .drawer-apps {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            overflow-y: auto;
+            padding-bottom: 100px;
+            flex: 1;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        /*
+        ####################################################################################################
+        #   indicador de gestos creo que lo tengo que eliminar 
+        ########################################################################################################
+        */
+        .gesture-indicator {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 12px;
+            text-align: center;
+            z-index: 10;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.6; }
+            50% { opacity: 1; }
+        }
+
+        /*
+        ################################################################################################################
+        #     espacio muerto 
+        ################################################################################################################ 
+        */
+        .app-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(40px);
+            z-index: 2000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
